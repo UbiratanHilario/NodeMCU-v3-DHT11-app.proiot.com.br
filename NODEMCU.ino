@@ -142,7 +142,6 @@ void loop()
 {
   lcd.clear();
   timeClient.update();                           // atualiza o relogio
-  Serial.println(timeClient.getFormattedTime()); // print do relogio da WEB
 
   Temperature = dht.readTemperature(); // Gets the values of the temperature
   Humidity = dht.readHumidity();       // Gets the values of the humidity
@@ -154,10 +153,7 @@ void loop()
   }
   else
   { // Se não
-    Serial.print("Temperatura: ");
-    Serial.println(Temperature);
-    Serial.print("Unidade: ");
-    Serial.println(Humidity);
+    Serial.println(timeClient.getFormattedTime() + ": Temperatura: " + (String)Temperature + " Unidade: " +(String)Humidity);
 
     lcd.setCursor(0, 0); // SETA A POSIÇÃO EM QUE O CURSOR INCIALIZA(LINHA 1)
     lcd.print(ip);       // ESCREVE O TEXTO NA PRIMEIRA LINHA DO DISPLAY LCD
